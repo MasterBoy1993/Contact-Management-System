@@ -1,0 +1,52 @@
+import java.util.*;
+
+class ContactManager<T> {  // Generics cho phép quản lý danh bạ với nhiều kiểu dữ liệu
+    private List<T> contacts;  // Danh sách các liên lạc
+
+    public ContactManager() {
+        this.contacts = new ArrayList<>();
+    }
+
+    // Thêm liên hệ vào danh bạ
+    public void addContact(T contact) {
+        contacts.add(contact);
+    }
+
+    // Xóa liên hệ khỏi danh bạ theo tên
+    public void removeContact(String name) {
+        contacts.removeIf(contact -> {
+            if (contact instanceof Contact) {
+                return ((Contact) contact).getName().equalsIgnoreCase(name);
+            }
+            return false;
+        });
+    }
+
+    // Tìm kiếm liên hệ theo tên
+    public List<T> searchByName(String name) {
+        List<T> result = new ArrayList<>();
+        contacts.stream()
+                .filter(contact -> contact instanceof Contact && ((Contact) contact).getName().equalsIgnoreCase(name))
+                .forEach(result::add);
+        return result;
+    }
+
+    // Sắp xếp danh bạ theo tên (Lambda Expression)
+    public void sortContacts() {
+        contacts.sort((c1, c2) -> {
+            if (c1 instanceof Contact && c2 instanceof Contact) {
+                return ((Contact) c1).getName().compareTo(((Contact) c2).getName());
+            }
+            return 0;
+        });
+    }
+
+    // Hiển thị tất cả liên hệ
+    public void displayContacts() {
+        contacts.forEach(contact -> {
+            if (contact instanceof Contact) {
+                System.out.println(contact.toString());
+            }
+        });
+    }
+}
