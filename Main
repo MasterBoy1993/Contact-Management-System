@@ -1,0 +1,34 @@
+public class Main {
+    public static void main(String[] args) {
+        // Tạo ContactManager để quản lý danh bạ
+        ContactManager<Contact> manager = new ContactManager<>();
+
+        // Thêm một số liên hệ vào danh bạ
+        manager.addContact(new Contact("Alice", "alice@example.com", 30, "123-456-789"));
+        manager.addContact(new Contact("Bob", "bob@example.com", 25, "234-567-890"));
+        manager.addContact(new Contact("Charlie", "charlie@example.com", 35, "345-678-901"));
+
+        // Hiển thị danh bạ trước khi sắp xếp
+        System.out.println("Before sorting:");
+        manager.displayContacts();
+
+        // Sắp xếp danh bạ theo tên
+        manager.sortContacts();
+
+        // Hiển thị danh bạ sau khi sắp xếp
+        System.out.println("\nAfter sorting:");
+        manager.displayContacts();
+
+        // Tìm kiếm liên hệ theo tên
+        System.out.println("\nSearch for Bob:");
+        List<Contact> result = manager.searchByName("Bob");
+        result.forEach(System.out::println);
+
+        // Xóa liên hệ "Alice"
+        manager.removeContact("Alice");
+
+        // Hiển thị danh bạ sau khi xóa
+        System.out.println("\nAfter removing Alice:");
+        manager.displayContacts();
+    }
+}
