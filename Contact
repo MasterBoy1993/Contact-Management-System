@@ -1,0 +1,26 @@
+// Lớp Contact đại diện cho một liên hệ trong danh bạ
+class Contact {
+    private String name;
+    private String email;
+    private int age;
+    private String phoneNumber;
+
+    public Contact(String name, String email, int age, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+    }
+
+    // Getter và Setter cho các thuộc tính
+    public String getName() { return name; }
+    public String getEmail() { return email; }
+    public int getAge() { return age; }
+    public String getPhoneNumber() { return phoneNumber; }
+
+    // Phương thức toString để in thông tin liên lạc
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Email: " + email + ", Age: " + age + ", Phone: " + phoneNumber;
+    }
+}
